@@ -6,7 +6,7 @@ import './CitySelection.scss'
 import {getCities} from 'api/getCities'
 import {EventsRequestQueryParams, getEvents} from 'api/getEvents'
 
-export const CitySelection = (props: {cities: null | string[]}) => {
+export const CitySelection = (props: {cities: string[]}) => {
   const cities = props.cities
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
@@ -17,8 +17,6 @@ export const CitySelection = (props: {cities: null | string[]}) => {
     searchParams.set('t', 'week')
     navigate(`?${searchParams.toString()}`)
   }
-
-  if (!cities) return <div style={{textAlign: 'center'}}>Loading...</div>
 
   return (
     <div className='CitySelection'>

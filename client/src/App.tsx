@@ -10,7 +10,7 @@ import {CitySelection} from 'pages/CitySelection'
 import {EventsDisplay} from 'pages/EventsDisplay'
 
 const App = () => {
-  const [cities, setCities] = useState<null | string[]>([])
+  const [cities, setCities] = useState<null | string[]>(null)
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -24,6 +24,13 @@ const App = () => {
   const searchParams = new URLSearchParams(location.search)
 
   const selectedCity = searchParams.get('city')
+
+  if (!cities)
+    return (
+      <div style={{textAlign: 'center'}} className='App'>
+        Loading...
+      </div>
+    )
 
   return <div className='App'>{selectedCity ? <EventsDisplay /> : <CitySelection cities={cities} />}</div>
 }
