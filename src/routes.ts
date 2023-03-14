@@ -2,6 +2,7 @@ import express, {Request} from 'express'
 import {Event, EventModel} from './event-model'
 const router = express.Router()
 import axios from 'axios'
+import {getCityFromCoordinates} from './utils'
 
 router.get('/', (req, res) => {
   res.send('Hello there')
@@ -16,29 +17,6 @@ type EventsRequestQueryParams = {
   longitude?: number
 }
 
-const getCityFromCoordinates = async (coordinates: number[]): Promise<string | null> => {
-  const lat = coordinates[1]
-  const lng = coordinates[0]
-  const api_key = process.env.GOOGLE_MAPS_API_KEY // Replace with your own API key
-
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&result_type=locality&key=${api_key}`
-  const response = await axios.get(url)
-  const results = response.data.results
-  if (response.data.status === 'OK') {
-    for (const result of results) {
-      for (const component of result.address_components) {
-        if (component.types.includes('locality')) {
-          return component.long_name
-        }
-      }
-    }
-  } else {
-    console.log('Geocoding failed')
-    return null
-  }
-  return null
-}
-
 let eventCityMap: {[id: string]: string | null} = {}
 
 const preProcessEventLocations = async () => {
@@ -51,6 +29,19 @@ const preProcessEventLocations = async () => {
 }
 
 preProcessEventLocations()
+
+router.get('/v1/cities', async (req, res) => {
+  await preProcessEventLocations()
+  // get unique cities from eventCityMap
+  let cities: string[] = []
+  for (let city of Object.values(eventCityMap)) {
+    if (city && !cities.includes(city)) {
+      cities.push(city)
+    }
+  }
+
+  res.json(cities)
+})
 
 // Pretend current date
 const currentDate = new Date('2022-11-28T02:00:00.000Z')

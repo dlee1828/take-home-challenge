@@ -1,15 +1,16 @@
-import {EventsRequestQueryParams, getEvents} from 'api/getEvents'
 import React, {useEffect} from 'react'
+
+import {getCities} from 'api/getCities'
+import {EventsRequestQueryParams, getEvents} from 'api/getEvents'
 
 export const CitySelection = () => {
   useEffect(() => {
-    const params: EventsRequestQueryParams = {
-      page: 1,
-      city: 'Los Angeles',
-      timeframe: 'week',
-      category: 'popular',
+    async function f() {
+      const cities = await getCities()
+      console.log('CITIES')
+      console.log(cities)
     }
-    getEvents(params)
+    f()
   }, [])
   return <div>City selection</div>
 }
