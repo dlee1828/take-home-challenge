@@ -25,10 +25,6 @@ export type EventsRequestQueryParams = {
 }
 
 export const getEvents = async (params: EventsRequestQueryParams) => {
-  try {
-    const response: Event[] = (await axios.get('http://localhost:4000/v1/events', {params})).data
-    console.log(response)
-  } catch (error) {
-    console.log(error)
-  }
+  const response: Event[] = (await axios.get('http://localhost:4000/v1/events', {params})).data
+  return response
 }
