@@ -1,4 +1,5 @@
 import React from 'react'
+import Confetti from 'react-confetti'
 import {useLocation, useNavigate} from 'react-router-dom'
 
 import './CitySelection.scss'
@@ -29,6 +30,7 @@ export const CitySelection = (props: {cities: string[]}) => {
 
   return (
     <div className='CitySelection'>
+      <Confetti colors={['#FFCC00']}></Confetti>
       <div className='Title'>WHERE ARE YOU LOOKING FOR EXPERIENCES?</div>
       <div className='CitiesContainer'>
         {cities.map(city => (
