@@ -1,10 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {useLocation, useNavigate} from 'react-router-dom'
 
 import './CitySelection.scss'
-
-import {getCities} from 'api/getCities'
-import {EventsRequestQueryParams, getEvents} from 'api/getEvents'
 
 const cityEmojis = {
   'Los Angeles': String.fromCodePoint(0x2600),
