@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-cli serve --mode=development --env development --open --hot",
     "build-stage": "webpack --mode=production --env development --progress",
-    "build": "webpack --mode=production --env production --progress",
+    "build": "npx webpack --mode=production --env production --progress",
     "lint": "eslint \"**/*.{js,tsx,ts}\" --resolve-plugins-relative-to=.eslintrc",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
