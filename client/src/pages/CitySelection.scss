@@ -31,6 +31,10 @@
   align-items: center;
   padding-top: 100px;
   .Title {
+    @media screen and (max-width: 700px) {
+      width: 80%;
+      text-align: center;
+    }
     color: $primary;
     font-size: 20px;
     font-weight: 200;
@@ -41,9 +45,11 @@
   .CitiesContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
+    width: 100%;
     @for $index from 1 through 10 {
       div:nth-child(#{$index}) {
         animation-delay: 0.5s * $index; // Set the animation delay based on the child element number
@@ -54,6 +60,9 @@
       box-shadow: 0 0 30px -2px #fc0, 0px 0px 10px #fc0 inset;
     }
     .CityOption {
+      @media screen and (max-width: 700px) {
+        width: 80%;
+      }
       display: flex;
       justify-content: center;
       align-items: center;
