@@ -11,11 +11,13 @@ export const EventsDisplay = () => {
   const searchParams = new URLSearchParams(location.search)
   const [events, setEvents] = useState<Event[] | null>(null)
   const navigate = useNavigate()
+  const [selectedTime, setSelectedTime] = useState<'today' | 'week' | null>(null)
 
   useEffect(() => {
     const city = searchParams.get('city') ?? 'near'
     let time = searchParams.get('t')
     if (time != 'today') time = 'week'
+    setSelectedTime(time as 'today' | 'week')
 
     const params: EventsRequestQueryParams = {
       page: 1,
@@ -54,9 +56,33 @@ export const EventsDisplay = () => {
 
   return (
     <div className='EventsDisplay'>
-      <button onClick={() => navigate('/')}>Go back</button>
-      <button onClick={() => setTimeframe('week')}>This Week</button>
-      <button onClick={() => setTimeframe('today')}>Today</button>
+      <video
+        className='MainVideo'
+        autoPlay
+        muted
+        loop={true}
+        src='https://posh-b2.s3.us-east-2.amazonaws.com/meta+(1)_1.mp4'></video>
+      <video
+        className='BlurVideo'
+        autoPlay
+        muted
+        loop={true}
+        src='https://posh-b2.s3.us-east-2.amazonaws.com/meta+(1)_1.mp4'></video>
+      <img
+        src='https://posh-b2.s3.us-east-2.amazonaws.com/left-arrow-in-circular-button-black-symbol.svg'
+        className='BackButton'
+        onClick={() => navigate('/')}
+      />
+      <div className='TimeButtonsContainer'>
+        <div className={`TimeButton ${selectedTime == 'week' ? 'selected' : ''}`} onClick={() => setTimeframe('week')}>
+          This Week
+        </div>
+        <div
+          className={`TimeButton ${selectedTime == 'today' ? 'selected' : ''}`}
+          onClick={() => setTimeframe('today')}>
+          Today
+        </div>
+      </div>
       <div className='EventCardsContainer'>{componentToDisplay}</div>
     </div>
   )

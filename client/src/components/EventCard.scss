@@ -1,10 +1,21 @@
 .EventCard {
   height: 400px;
-  width: 300px;
+  width: 320px;
   border-radius: 20px;
   position: relative;
   background-size: cover;
   transition: scale 0.2s ease-in-out;
+
+  .Filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8666666667) 90%, #000 100%);
+  }
+
   &:hover {
     cursor: pointer;
     scale: 1.05;
@@ -14,8 +25,8 @@
     width: 44px;
     height: 44px;
     box-shadow: 0px 8px 11px rgba(0, 0, 0, 0.25);
-    top: 20px;
-    left: 30px;
+    top: 15px;
+    left: 15px;
     border-radius: 50%;
   }
   .BottomSection {
@@ -23,19 +34,38 @@
     left: 30px;
     position: absolute;
     color: white;
-    text-transform: uppercase;
     display: flex;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
     .Day {
+      font-family: Circular Std;
+      font-weight: 700;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    .VerticalLine {
+      width: 1px;
+      height: 40px;
+      background: #fff;
     }
     .Names {
       .EventName {
-        width: 150px;
-        white-space: nowrap;
+        color: #fff;
+        height: 24px;
         overflow: hidden;
+        font-family: Circular Std;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: left;
       }
       .GroupName {
+        color: #fff;
+        height: 24px;
+        overflow: hidden;
+        font-family: Nunito;
+        font-weight: 200;
+        font-size: 15px;
+        text-align: left;
       }
     }
   }

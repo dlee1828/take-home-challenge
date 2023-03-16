@@ -3,8 +3,82 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  .EventCardsContainer {
+  position: relative;
+  padding-top: 300px;
+
+  .BackButton {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    opacity: 0.6;
+    width: 60px;
+    height: 60px;
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+
+  .TimeButtonsContainer {
     display: flex;
+    gap: 20px;
+    width: 100%;
+    padding: 0px 40px;
+    align-items: flex-start;
+    .TimeButton {
+      border: 1px solid #7a7b7d;
+      text-transform: uppercase;
+      font-family: Circular Std;
+      font-weight: 700;
+      color: #7a7b7d;
+      font-size: 14px;
+      padding: 8px 30px;
+      border-radius: 50px;
+      transition: 0.2s;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      &:hover {
+        cursor: pointer;
+        border: 1px solid #fc0;
+        color: #fc0;
+      }
+      &.selected {
+        border: 1px solid #fc0;
+        color: #fc0;
+      }
+    }
+  }
+
+  .MainVideo {
+    width: 1200px;
+    position: absolute;
+    top: -160px;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+  }
+  .BlurVideo {
+    width: 2700px;
+    opacity: 0.7;
+    position: fixed;
+    top: 0px;
+    transform: translateY(-35%);
+    mix-blend-mode: screen;
+    filter: blur(100px);
+  }
+  button {
+    z-index: 1;
+  }
+
+  .EventCardsContainer {
+    width: 100%;
+    padding: 0px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 20px;
   }
 }
