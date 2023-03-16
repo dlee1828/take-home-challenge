@@ -1,8 +1,83 @@
+@import '../assets/stylesheets/globals';
+
+@keyframes CityOptionEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  10% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes TitleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .CitySelection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  button {
-    width: 200px;
+  padding-top: 100px;
+  .Title {
+    color: $primary;
+    font-size: 20px;
+    font-weight: 200;
+    font-family: Circular Std;
+    margin-bottom: 50px;
+    animation: TitleEntrance 2s forwards;
+  }
+  .CitiesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    @for $index from 1 through 10 {
+      div:nth-child(#{$index}) {
+        animation-delay: 0.5s * $index; // Set the animation delay based on the child element number
+      }
+    }
+    .CityOption:hover {
+      cursor: pointer;
+      box-shadow: 0 0 30px -2px #fc0, 0px 0px 10px #fc0 inset;
+    }
+    .CityOption {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      width: 600px;
+      height: 80px;
+      border: 1px solid $primary;
+      text-align: center;
+      color: $primary;
+      padding: 20px 0px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px -2px #fc0, 0px 0px 10px #fc0 inset;
+      transition: 0.2s;
+      animation: CityOptionEntrance 2s forwards ease-out;
+      opacity: 0;
+      transform: translateY(200px);
+      &.Near {
+        border-color: $secondary;
+        color: $secondary;
+        box-shadow: 0 0 10px -2px $secondary, 0px 0px 10px $secondary inset;
+      }
+      &.Near:hover {
+        box-shadow: 0 0 30px -2px $secondary, 0px 0px 10px $secondary inset;
+      }
+    }
   }
 }

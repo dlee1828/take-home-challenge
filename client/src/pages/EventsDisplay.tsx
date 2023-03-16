@@ -4,6 +4,7 @@ import {useLocation, useNavigate} from 'react-router-dom'
 import './EventsDisplay.scss'
 
 import {Event, EventsRequestQueryParams, getEvents} from 'api/getEvents'
+import {EventCard} from 'components/EventCard'
 
 export const EventsDisplay = () => {
   const location = useLocation()
@@ -45,7 +46,7 @@ export const EventsDisplay = () => {
     componentToDisplay = (
       <>
         {events.map((event, index) => (
-          <div key={index}>{event.name}</div>
+          <EventCard key={index} event={event}></EventCard>
         ))}
       </>
     )
@@ -56,7 +57,7 @@ export const EventsDisplay = () => {
       <button onClick={() => navigate('/')}>Go back</button>
       <button onClick={() => setTimeframe('week')}>This Week</button>
       <button onClick={() => setTimeframe('today')}>Today</button>
-      {componentToDisplay}
+      <div className='EventCardsContainer'>{componentToDisplay}</div>
     </div>
   )
 }
