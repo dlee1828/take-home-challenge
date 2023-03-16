@@ -6,6 +6,7 @@ import '../src/assets/webfonts/Nunito/Nunito-Black.ttf'
 import './App.scss'
 
 import {getCities} from 'api/getCities'
+import {Loader} from 'components/Loader'
 import {CitySelection} from 'pages/CitySelection'
 import {EventsDisplay} from 'pages/EventsDisplay'
 
@@ -27,8 +28,8 @@ const App = () => {
 
   if (!cities)
     return (
-      <div style={{textAlign: 'center'}} className='App'>
-        Loading...
+      <div className='LoadingScreen'>
+        <Loader />
       </div>
     )
 
