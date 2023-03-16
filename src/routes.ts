@@ -4,10 +4,6 @@ const router = express.Router()
 import axios from 'axios'
 import {getCityFromCoordinates} from './utils'
 
-router.get('/', (req, res) => {
-  res.send('Hello there')
-})
-
 type EventsRequestQueryParams = {
   category?: string
   timeframe: 'week' | 'today'

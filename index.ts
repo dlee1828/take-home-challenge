@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import * as dotenv from 'dotenv'
 import {EventModel} from './src/event-model'
 import routes from './src/routes'
+import express from 'express'
 
 dotenv.config()
 
@@ -27,6 +28,9 @@ mongoose.connection.once('open', async () => {
 
 app.use(routes)
 
-app.listen(server_port, server_host, () => {
-  console.log('Running Server')
-})
+app.use(express.static('client/build'))
+
+export default app
+// app.listen(server_port, server_host, () => {
+//   console.log('Running Server')
+// })
