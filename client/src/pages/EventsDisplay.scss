@@ -55,8 +55,13 @@
 
   .MainVideo {
     width: 1200px;
+    transform: translateY(-70%);
+    @media screen and (max-width: 1000px) {
+      width: 130%;
+      transform: translateY(-80%);
+    }
     position: absolute;
-    top: -160px;
+    // top: -13%;
     mix-blend-mode: screen;
     opacity: 0.9;
   }
