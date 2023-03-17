@@ -30,7 +30,10 @@ app.use(routes)
 
 app.use(express.static('client/build'))
 
+// export default app
+if (process.env.NODE_ENV == 'development') {
+  app.listen(server_port, server_host, () => {
+    console.log('Running Server')
+  })
+}
 export default app
-// app.listen(server_port, server_host, () => {
-//   console.log('Running Server')
-// })
