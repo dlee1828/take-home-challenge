@@ -27,6 +27,6 @@ export type EventsRequestQueryParams = {
 }
 
 export const getEvents = async (params: EventsRequestQueryParams) => {
-  const response: Event[] = (await axios.get(`${apiUrl}/v1/cities`, {params})).data
+  const response: Event[] = (await axios.get(`${apiUrl}/v1/events`, {params})).data
   return response
 }
