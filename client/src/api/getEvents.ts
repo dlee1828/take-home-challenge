@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import {apiUrl} from './url'
+
 export interface Event {
   name: string
   flyer: string
@@ -25,6 +27,6 @@ export type EventsRequestQueryParams = {
 }
 
 export const getEvents = async (params: EventsRequestQueryParams) => {
-  const response: Event[] = (await axios.get('http://localhost:4000/v1/events', {params})).data
+  const response: Event[] = (await axios.get(`${apiUrl}/v1/cities`, {params})).data
   return response
 }
