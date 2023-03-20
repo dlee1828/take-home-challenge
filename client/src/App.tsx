@@ -6,6 +6,7 @@ import '../src/assets/webfonts/Nunito/Nunito-Black.ttf'
 import './App.scss'
 
 import {getCities} from 'api/getCities'
+import {apiUrl} from 'api/url'
 import {Loader} from 'components/Loader'
 import {CitySelection} from 'pages/CitySelection'
 import {EventsDisplay} from 'pages/EventsDisplay'
@@ -19,6 +20,8 @@ const App = () => {
       setCities(response)
     }
     fetchCities()
+    console.log(process.env.NODE_ENV)
+    console.log(apiUrl)
   }, [])
 
   const location = useLocation()
