@@ -57,6 +57,7 @@ export const EventsDisplay = () => {
   return (
     <div className='EventsDisplay'>
       <video
+        playsInline
         className='MainVideo'
         autoPlay
         muted
@@ -64,6 +65,7 @@ export const EventsDisplay = () => {
         src='https://posh-b2.s3.us-east-2.amazonaws.com/meta+(1)_1.mp4'></video>
       <video
         className='BlurVideo'
+        playsInline
         autoPlay
         muted
         loop={true}
